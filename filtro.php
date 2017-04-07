@@ -49,6 +49,17 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     $(document).ready(function(){
         //showInfo('Leonardo', 'Acosta', 'Ortega');
           getDirectory('<?php echo($choice); ?>', $('#id02'));
+
+          $('#btnModify').click(function(a){
+                var b = document.getElementsByTagName('form')[1];
+                if(b.checkValidity())
+                {
+                  
+                  alert($('#idModify').val());
+                }
+                a.preventDefault();
+
+          });
           
           $('#btnSave').click(function(a){
             var sre = $('#l').val();
@@ -115,7 +126,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
             //var sd="<label style=color:#000fff>Leonardo ACOR<label>";
 
             //items.push("<tr class='item'><td><a href='"+this.L2+"'>" + this.L1 + "<a></td><td>" + this.L3 + "</td><td>" + this.L6 + "</td><td>" + this.L7 + "</td><td>" + this.L8 + "</td><td>" + this.L9 + "</td><td><button onclick='alert(\""+this.L9+"\")' class='w3-button w3-large w3-green' style='width:100%;'>ver más</button><br><button onclick='alert(\"modificar\");' class='w3-button w3-large w3-blue' style='width:100%'>modificar</button><br>");
-            items.push("<tr class='item'><td><a href='"+this.L2+"'>" + this.L1 + "<a></td><td>" + this.L3 + "</td><td>" + this.L6 + "</td><td>" + this.L7 + "</td><td>" + this.L8 + "</td><td>" + this.L9 + "  </td><td><button onclick='document.getElementById(\"divModal\").style.display=\"block\"; showInfo(\""+this.L5+"\", \""+this.L4+"\", \"" + this.L10 + "\", \"" + this.L2 + "\", \""+sd+"\");' class='w3-button w3-large w3-green' style='width:100%;'>ver más</button><br><button onclick='document.getElementById(\"divModify\").style.display=\"block\";' class='w3-button w3-large w3-blue' style='width:100%'>modificar</button><br><button onclick='alert(\"borrar\");' class='w3-button w3-large w3-red' style='width:100%'>borrar</button></td></tr>");
+            items.push("<tr class='item'><td><a href='"+this.L2+"'>" + this.L1 + "<a></td><td>" + this.L3 + "</td><td>" + this.L6 + "</td><td>" + this.L7 + "</td><td>" + this.L8 + "</td><td>" + this.L9 + "  </td><td><button onclick='document.getElementById(\"divModal\").style.display=\"block\"; showInfo(\""+this.L5+"\", \""+this.L4+"\", \"" + this.L10 + "\", \"" + this.L2 + "\", \""+sd+"\");' class='w3-button w3-large w3-green' style='width:100%;'>ver más</button><br><button onclick='document.getElementById(\"divModify\").style.display=\"block\";document.getElementById(\"idModify\").value = this.id;' id=\""+this.L0+"\" class='w3-button w3-large w3-blue' style='width:100%'>modificar</button><br><button onclick='alert(\"borrar\");' class='w3-button w3-large w3-red' style='width:100%'>borrar</button></td></tr>");
             //items.push('<tr class="item"><td><a href="'+this.L2+'">' + this.L1 + '<a></td><td>' + this.L3 + '</td><td>' + this.L6 + '</td><td>' + this.L7 + '</td><td>' + this.L8 + '</td><td>' + this.L9 + '</td><td><button onclick="document.getElementById(\'divModal\').style.display=\'block\'; showInfo(\''+this.L5+'\',\''+this.L4+'\', \''+this.L10+'\', \''+this.L2+'\', \''+sd+'\')" class="w3-button w3-large w3-green" style="width:100%;">ver más</button><br><button onclick="alert(\'modificar\');" class="w3-button w3-large w3-blue" style="width:100%">modificar</button><br><button onclick="alert(\'borrar\');" class="w3-button w3-large w3-red" style="width:100%">borrar</button></td></tr>');
           });	 
           domComponent.append( items.join('') );
@@ -331,6 +342,47 @@ function myFunction() {
     <div class="w3-container"> 
         <span onclick="document.getElementById('divModify').style.display='none';" class="w3-button w3-xlarge w3-display-topright">&times;</span>
         <header> modificar </header>
+        <section>
+        <form class="w3-container">
+        <div class="w3-section">
+        <label id="idModify"></label>
+          <label><b>OSC</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="ingresa el nombre de la organización" id="a1" maxlength="200" required />
+          <label><b>Página oficial</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="http://ejemplo.com" id="b1" maxlength="200" required />
+          <label><b>Ubicación</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="calle, num-ext, num-int, colonia, delegación/municipio, estado" id="c1" maxlength="200" required />
+          <label><b>Teléfono</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="01800 1234 5678, 5524068723, 0155 3456 9876" id="d1" maxlength="200" required />
+          
+          <label><b>Correo electrónico</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" type="email" placeholder="contacto@ejemplo.com" id="e1" maxlength="200" required />
+          
+          <!--<input class="w3-input w3-border w3-margin-bottom"   type="text" placeholder="servicios que ofrece" id="f" maxlength="500" required />-->
+          <label for="f1"><b>Servicios que ofrece</b></label>
+          <textarea id="f1" rows="5" cols="15" class="w3-input w3-border w3-margin-bottom" placeholder="escribe los servicios que ofrece la institución" maxlength="500" required></textarea>
+          
+          <label><b>Atiende</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="nombre completo" id="g1" required maxlength="200" />
+          <label><b>Horarios</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="l-v 8am-6:30pm, sábados 8am-3pm" id="h1" maxlength="200" required />
+          
+          <label><b>Costos</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="costos de los servicios" id="i1" maxlength="45" required />
+          <label><b>Contacto</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="nombre completo" id="j1" maxlength="200" required />
+          
+          <label><b>Legalidad por México</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="escribe tu correo" id="k1" maxlength="45"  />
+          
+          
+          <label><b>Ubicación mapa</b></label>
+          <textarea rows="5" cols="15" class="w3-input w3-border w3-margin-bottom" placeholder="escribe el texto que aparece en google maps" id="l1" maxlength="500"> </textarea>
+
+          <button id="btnModify" class="w3-button w3-block w3-indigo w3-section w3-padding" type="button">Guardar</button>
+        </div>
+      </form>
+      </section>
         <footer class="w3-center">Legalidad por México - Directorio de Instituciones</footer>
     </div>
   </div>

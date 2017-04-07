@@ -1900,7 +1900,7 @@ class InfoSystem extends DataSystem
     {
         $this->OpenDB();
         $this->bConnection->set_charset('utf8');
-		$res = $this->bConnection->query("SELECT Name AS L1, Website AS L2, Address AS L3, Tel AS L4, Email AS L5, Services AS L6, InCharge AS L7, Shift AS L8, Cost AS L9, Contact AS L10, IFNULL(Map,'sin mapa') AS L11 FROM Directory WHERE Directory.Status = 1 AND Directory.Category = '".$category."';");
+		$res = $this->bConnection->query("SELECT IdDirectory AS L0, Name AS L1, Website AS L2, Address AS L3, Tel AS L4, Email AS L5, Services AS L6, InCharge AS L7, Shift AS L8, Cost AS L9, Contact AS L10, IFNULL(Map,'sin mapa') AS L11 FROM Directory WHERE Directory.Status = 1 AND Directory.Category = '".$category."';");
         $rows = array();
 		while($r = mysqli_fetch_assoc($res)) {
 
